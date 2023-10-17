@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        AllowsTransparency="true"		
+        WindowStyle="none"
+        Background="Transparent"
+        Title="MainWindow" Height="600" Width="1200">
+    <Border Background="Transparent" CornerRadius="10" Opacity="1" BorderThickness="1" BorderBrush="#999">
 
-    </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50px"/>
+                <RowDefinition/>
+                <RowDefinition Height="20px"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20px"/>
+                <ColumnDefinition Width="250px"/>
+                <ColumnDefinition Width="20px"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="800px"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20px"/>
+
+            </Grid.ColumnDefinitions>
+           
+            
+            <Border Background="#000" CornerRadius="10" Opacity=".9" BorderThickness="1" BorderBrush="#999" Grid.ColumnSpan="7" Grid.RowSpan="3">
+                <Border.Effect>
+                    <BlurEffect Radius="100" />
+                </Border.Effect>
+            </Border>
+            <Rectangle Fill="#000" Grid.Row="0" Grid.Column="1" Opacity=".8"></Rectangle>
+            <Rectangle Fill="#111" Grid.Row="1" Grid.Column="4"  Opacity=".8"></Rectangle>
+            <Rectangle Fill="#111" Grid.Row="1" Grid.Column="1"  Opacity=".8"></Rectangle>
+        </Grid>
+
+    </Border>
+
 </Window>
