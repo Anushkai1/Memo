@@ -7,8 +7,30 @@
         mc:Ignorable="d"
         AllowsTransparency="true"		
         WindowStyle="none"
+        WindowStartupLocation="CenterScreen"
         Background="Transparent"
         Title="MainWindow" Height="600" Width="1200">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Border Background="Transparent" CornerRadius="10" Opacity="1" BorderThickness="1" BorderBrush="#999">
 
         <Grid>
@@ -28,15 +50,13 @@
 
             </Grid.ColumnDefinitions>
 
-
             <Border Background="#000" CornerRadius="10" Opacity=".9" BorderThickness="1" BorderBrush="#999" Grid.ColumnSpan="7" Grid.RowSpan="3">
                 <Border.Effect>
                     <BlurEffect Radius="100" />
                 </Border.Effect>
             </Border>
-            
 
-            <Rectangle  Grid.Row="0" Grid.Column="1"  Opacity="1" Margin="0,13,163,12">
+            <Rectangle  Grid.Row="0" Grid.Column="1"  Opacity="1" Margin="0,13,168,12">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="B:/VStudio Projects/Memo/Memo/Memo.png"></ImageBrush>
                 </Rectangle.Fill>
@@ -44,7 +64,119 @@
             
             <Rectangle Fill="#000" Grid.Row="1" Grid.Column="4"  Opacity=".8"></Rectangle>
             <Rectangle Fill="#000" Grid.Row="1" Grid.Column="1"  Opacity=".8"></Rectangle>
-            
+
+            <Grid  Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    
+                    <ColumnDefinition Width="120"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Background="Transparent" Grid.Column="0" Content="Memo" Foreground="#fff" BorderThickness="0" FontFamily="Poppins" FontSize="14" FontWeight="Bold"></Button>
+                <Button Background="Transparent" Grid.Column="1" Content="ToDo" Foreground="#aaa" BorderThickness="0" FontFamily="Poppins" FontSize="14"></Button>
+                <Button Background="Transparent" Grid.Column="2" Content="Dairy" Foreground="#aaa" BorderThickness="0" FontFamily="Poppins" FontSize="14"></Button>
+                <Button Background="Transparent" Grid.Column="3" Content="Reminder" Foreground="#aaa" BorderThickness="0" FontFamily="Poppins" FontSize="14"></Button>
+                
+
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#222" Grid.Column="5" Foreground="#aaa" BorderThickness="0" FontFamily="Poppins" FontSize="14" FontWeight="Medium"  Margin="0,9,0,10" Padding="5">serach</TextBox>
+            </Grid>
+
+
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock  Grid.Row="0" Foreground="#ddd"  FontFamily="Poppins" FontSize="14" FontWeight="Bold"  >To Do</TextBlock>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#222" Grid.Row="2" Foreground="#aaa" BorderThickness="0" FontFamily="Poppins" FontSize="14" FontWeight="Medium"  Padding="5" Margin="0,0,19,17">Type...</TextBox>
+                <TextBlock  Grid.Row="3" Foreground="#ddd"  FontFamily="Poppins" FontSize="14" FontWeight="Bold"  >Reminder</TextBlock>
+                <StackPanel Grid.Row="1">
+                    <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#fff" Margin="5,5,5,20" Opacity=".9"/>
+                        <TextBlock  Grid.Column="1" Foreground="#ddd"  FontFamily="Poppins" FontSize="12" Margin="0,4,0,7" FontWeight="Medium">SEO  Front End</TextBlock>
+                    </Grid>
+                     <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#fff" Margin="5,5,5,20" Opacity=".9"/>
+                        <TextBlock  Grid.Column="1" Foreground="#bbb"  FontFamily="Poppins" FontSize="12" Margin="0,4,0,7" FontWeight="Medium">KidneyFY UI </TextBlock>
+                    </Grid>
+                      <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#fff" Margin="5,5,5,20" Opacity=".9"/>
+                        <TextBlock  Grid.Column="1" Foreground="#bbb"  FontFamily="Poppins" FontSize="12" Margin="0,4,0,7" FontWeight="Medium">Complete PM Note</TextBlock>
+                    </Grid>
+                      <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#fff" Margin="5,5,5,20" Opacity=".4"/>
+                        <TextBlock  Grid.Column="1" Foreground="#bbb"  FontFamily="Poppins" FontSize="12" Margin="0,4,0,7" FontWeight="Medium">SE Presentation</TextBlock>
+                    </Grid>
+                    <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#fff" Margin="5,5,5,20" Opacity=".4"/>
+                        <TextBlock  Grid.Column="1" Foreground="#bbb"  FontFamily="Poppins" FontSize="12" Margin="0,4,0,7" FontWeight="Medium">SE Project</TextBlock>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Margin="15">
+                    <Grid Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="#fff"  FontFamily="Poppins" FontSize="10"  FontWeight="Medium" Margin="0,0,0,28" Grid.RowSpan="2">Today 5.00PM</TextBlock>
+                        <TextBlock  Grid.Row="1" Foreground="#aaa"  FontFamily="Poppins" FontSize="14" Margin="0,2,0,8" FontWeight="SemiBold">Project Presentation</TextBlock>
+                    </Grid>
+                     <Grid Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="#fff"  FontFamily="Poppins" FontSize="10"  FontWeight="Medium" Margin="0,0,0,28" Grid.RowSpan="2">Today 5.00PM</TextBlock>
+                        <TextBlock  Grid.Row="1" Foreground="#aaa"  FontFamily="Poppins" FontSize="14" Margin="0,2,0,8" FontWeight="SemiBold">Assignment Due</TextBlock>
+                    </Grid>
+                     <Grid Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="#fff"  FontFamily="Poppins" FontSize="10"  FontWeight="Medium" Margin="0,0,0,28" Grid.RowSpan="2">Today 5.00PM</TextBlock>
+                        <TextBlock  Grid.Row="1" Foreground="#aaa"  FontFamily="Poppins" FontSize="14" Margin="0,2,0,8" FontWeight="SemiBold">HIru Mega Blast</TextBlock>
+                    </Grid>
+                     <Grid Height="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="#fff"  FontFamily="Poppins" FontSize="10"  FontWeight="Medium" Margin="0,0,0,28" Grid.RowSpan="2">Today 5.00PM</TextBlock>
+                        <TextBlock  Grid.Row="1" Foreground="#aaa"  FontFamily="Poppins" FontSize="14" Margin="0,2,0,8" FontWeight="SemiBold">Hasindu's Birthday</TextBlock>
+                    </Grid>
+                   
+                    
+                </StackPanel>
+            </Grid>
         </Grid>
 
     </Border>
