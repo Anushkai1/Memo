@@ -27,16 +27,24 @@
                 <ColumnDefinition Width="20px"/>
 
             </Grid.ColumnDefinitions>
-           
-            
+
+
             <Border Background="#000" CornerRadius="10" Opacity=".9" BorderThickness="1" BorderBrush="#999" Grid.ColumnSpan="7" Grid.RowSpan="3">
                 <Border.Effect>
                     <BlurEffect Radius="100" />
                 </Border.Effect>
             </Border>
-            <Rectangle Fill="#000" Grid.Row="0" Grid.Column="1" Opacity=".8"></Rectangle>
-            <Rectangle Fill="#111" Grid.Row="1" Grid.Column="4"  Opacity=".8"></Rectangle>
-            <Rectangle Fill="#111" Grid.Row="1" Grid.Column="1"  Opacity=".8"></Rectangle>
+            
+
+            <Rectangle  Grid.Row="0" Grid.Column="1"  Opacity="1" Margin="0,13,163,12">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="B:/VStudio Projects/Memo/Memo/Memo.png"></ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            
+            <Rectangle Fill="#000" Grid.Row="1" Grid.Column="4"  Opacity=".8"></Rectangle>
+            <Rectangle Fill="#000" Grid.Row="1" Grid.Column="1"  Opacity=".8"></Rectangle>
+            
         </Grid>
 
     </Border>
